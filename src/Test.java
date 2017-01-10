@@ -16,7 +16,9 @@ public class Test {
         File file = new File("Lenna.png");
         final BufferedImage normal = ImageIO.read(file).getSubimage(0,0,500,500);
 
-        PhotoProcessor fS = new SignalNoiseApproximation();
+        SignalNoiseApproximation fS = new SignalNoiseApproximation();
+        fS.setRandom(true);
+        fS.setRandomNoisePercent(0.3);
         final BufferedImage resultImg = fS.getTransformedImage(normal,PhotoProcessor.TWO_COLORS_PALETTE);
 
         JFrame frame = new JFrame("Test");

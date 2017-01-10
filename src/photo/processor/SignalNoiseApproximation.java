@@ -16,6 +16,9 @@ public class SignalNoiseApproximation implements PhotoProcessor {
     private int width;
     private int height;
 
+    private boolean isRandom = false;
+
+    private double randomNoisePercent = 0.1;
     private int aRate = 52;
     private int alfaRate = 128;
     private int betaRate = 128;
@@ -54,17 +57,29 @@ public class SignalNoiseApproximation implements PhotoProcessor {
     }
 
     private int diff(Color paletteColor, Color color,int x, int y) {
-        double r = Math.random();
-        return (int) (
+        if (isRandom) {
+            double r = Math.random();
+            return  (int)(
+                Math.pow(paletteColor.getRed()-(int) ((color.getRed()-randomNoisePercent*color.getRed()) + r*(color.getRed()+randomNoisePercent*color.getRed())),2) +
+                Math.pow(paletteColor.getGreen()-(int) ((color.getGreen()-randomNoisePercent*color.getGreen()) + r*(color.getGreen()+randomNoisePercent*color.getGreen())),2) +
+                Math.pow(paletteColor.getBlue()-(int) ((color.getBlue()-randomNoisePercent*color.getBlue()) + r*(color.getBlue()+randomNoisePercent*color.getBlue())),2)
+            );
+        } else {
+            return (int) (
                 Math.pow(paletteColor.getRed()-color.getRed()+aRate*Math.sin(alfaRate*x)*Math.sin(betaRate*y),2) +
                 Math.pow(paletteColor.getGreen()-color.getGreen()+aRate*Math.sin(alfaRate*x)*Math.sin(betaRate*y),2) +
                 Math.pow(paletteColor.getBlue()-color.getBlue()+aRate*Math.sin(alfaRate*x)*Math.sin(betaRate*y),2)
-                );
-//        return  (int)(
-//                Math.pow(paletteColor.getRed()-(int) ((color.getRed()-0.3*color.getRed()) + r*(color.getRed()+0.3*color.getRed())),2) +
-//                Math.pow(paletteColor.getGreen()-(int) ((color.getGreen()-0.3*color.getGreen()) + r*(color.getGreen()+0.3*color.getGreen())),2) +
-//                Math.pow(paletteColor.getBlue()-(int) ((color.getBlue()-0.3*color.getBlue()) + r*(color.getBlue()+0.3*color.getBlue())),2)
-//        );
+            );
+        }
+    }
+
+
+    public boolean isRandom() {
+        return isRandom;
+    }
+
+    public void setRandom(boolean random) {
+        isRandom = random;
     }
 
     public int getaRate() {
@@ -89,5 +104,14 @@ public class SignalNoiseApproximation implements PhotoProcessor {
 
     public void setBetaRate(int betaRate) {
         this.betaRate = betaRate;
+    }
+
+    public double getRandomNoisePercent() {
+        return randomNoisePercent;
+    }
+
+    public void setRandomNoisePercent(double randomNoisePercent) {
+        if (randomNoisePercent>=0 && randomNoisePercent<=1)
+            this.randomNoisePercent = randomNoisePercent;
     }
 }
