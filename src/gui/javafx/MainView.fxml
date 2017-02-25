@@ -15,6 +15,7 @@
 <?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.VBox?>
 
+<?import javafx.scene.layout.StackPane?>
 <BorderPane xmlns="http://javafx.com/javafx/8.0.101" xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="gui.javafx.Controller">
     <top>
@@ -24,10 +25,10 @@
                     <menus>
                         <Menu text="_File">
                             <items>
-                                <MenuItem text="_Open file..." onAction="#openFile"/>
+                                <MenuItem onAction="#openFile" text="_Open file..." />
                                 <MenuItem text="_Save file..." />
                                 <SeparatorMenuItem />
-                                <MenuItem text="E_xit" onAction="#closeProgram"/>
+                                <MenuItem onAction="#closeProgram" text="E_xit" />
                             </items>
                         </Menu>
                         <Menu text="_Edit">
@@ -58,9 +59,14 @@
         </VBox>
     </top>
     <left>
-        <ScrollPane fx:id="leftSP">
+        <ScrollPane fx:id="leftSP" >
             <content>
-                <ImageView fx:id="beforeImageView" />
+                <StackPane fx:id="leftStackPImg" alignment="CENTER" >
+                    <children>
+                        <ImageView fx:id="beforeImageView" />
+                    </children>
+                </StackPane>
+
             </content>
             <BorderPane.margin>
                 <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
@@ -70,7 +76,11 @@
     <right>
         <ScrollPane fx:id="rightSP">
             <content>
-                <ImageView fx:id="afterImageView" />
+                <StackPane fx:id="rightStackPImg" alignment="CENTER" >
+                    <children>
+                        <ImageView fx:id="afterImageView" />
+                    </children>
+                </StackPane>
             </content>
             <BorderPane.margin>
                 <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
@@ -78,13 +88,12 @@
         </ScrollPane>
     </right>
     <center>
-        <VBox fx:id="center" alignment="BOTTOM_CENTER" prefWidth="200" fillWidth="false" spacing="10.0"
-              BorderPane.alignment="CENTER">
+        <VBox fx:id="center" alignment="BOTTOM_CENTER" fillWidth="false" prefWidth="200" spacing="10.0" BorderPane.alignment="CENTER">
             <children>
                 <ChoiceBox fx:id="algorithmChoiceBox" />
                 <ChoiceBox fx:id="paletteChoiceBox" />
                 <Region VBox.vgrow="ALWAYS" />
-                <Button fx:id="submitButton" text="_Submit" onAction="#mainProcessSubmitted" />
+                <Button fx:id="submitButton" onAction="#mainProcessSubmitted" text="_Submit" />
             </children>
             <padding>
                 <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
@@ -94,7 +103,9 @@
     <bottom>
         <HBox BorderPane.alignment="CENTER">
             <children>
-                <Button text="_Choose file..." onAction="#openFile"/>
+                <Button onAction="#openFile" text="_Choose file..." />
+                <Region HBox.hgrow="ALWAYS" />
+                <Button onAction="#saveFile" text="_Save file..." />
             </children>
             <padding>
                 <Insets bottom="10.0" left="10.0" right="10.0" />
