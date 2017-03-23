@@ -6,110 +6,68 @@
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.SeparatorMenuItem?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
-<?import javafx.scene.layout.StackPane?>
 <BorderPane xmlns="http://javafx.com/javafx/8.0.101" xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="gui.javafx.Controller">
     <top>
         <VBox BorderPane.alignment="CENTER">
-            <children>
-                <MenuBar>
-                    <menus>
-                        <Menu text="_File">
-                            <items>
-                                <MenuItem onAction="#openFile" text="_Open file..." />
-                                <MenuItem text="_Save file..." />
-                                <SeparatorMenuItem />
-                                <MenuItem onAction="#closeProgram" text="E_xit" />
-                            </items>
-                        </Menu>
-                        <Menu text="_Edit">
-                            <items>
-                                <MenuItem text="_Delete" />
-                            </items>
-                        </Menu>
-                        <Menu text="_Help">
-                            <items>
-                                <MenuItem text="_About" />
-                            </items>
-                        </Menu>
-                    </menus>
-                </MenuBar>
-                <HBox spacing="10.0">
-                    <children>
-                        <RadioButton fx:id="beforeOSizeRB" text="Original size" />
-                        <RadioButton fx:id="beforeFitToWRB" text="Fit to window" />
-                        <Region HBox.hgrow="ALWAYS" />
-                        <RadioButton fx:id="afterOSizeRB" text="Original size" />
-                        <RadioButton fx:id="afterFitToWRB" text="Fit to window" />
-                    </children>
-                    <padding>
-                        <Insets left="10.0" right="10.0" top="10.0" />
-                    </padding>
-                </HBox>
-            </children>
+            <MenuBar>
+                <Menu text="_File">
+                    <MenuItem onAction="#openFile" text="_Open file..."/>
+                    <MenuItem onAction="#saveFile" text="_Save file..."/>
+                    <SeparatorMenuItem/>
+                    <MenuItem onAction="#closeProgram" text="E_xit"/>
+                </Menu>
+                <Menu text="_Edit">
+                    <MenuItem text="_Delete"/>
+                </Menu>
+                <Menu text="_Help">
+                    <MenuItem text="_About"/>
+                </Menu>
+            </MenuBar>
+            <HBox spacing="10.0">
+                <padding>
+                    <Insets left="10.0" right="10.0" top="10.0"/>
+                </padding>
+                <ChoiceBox fx:id="algorithmChoiceBox"/>
+                <ChoiceBox fx:id="paletteChoiceBox"/>
+                <Region/>
+                <Button fx:id="submitButton" onAction="#mainProcessSubmitted" text="_Submit"/>
+            </HBox>
         </VBox>
     </top>
     <left>
-        <ScrollPane fx:id="leftSP" >
-            <content>
-                <StackPane fx:id="leftStackPImg" alignment="CENTER" >
-                    <children>
-                        <ImageView fx:id="beforeImageView" />
-                    </children>
-                </StackPane>
-
-            </content>
+        <HBox fx:id="leftHBox">
             <BorderPane.margin>
-                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                <Insets bottom="10.0" top="10.0"/>
             </BorderPane.margin>
-        </ScrollPane>
-    </left>
-    <right>
-        <ScrollPane fx:id="rightSP">
-            <content>
-                <StackPane fx:id="rightStackPImg" alignment="CENTER" >
-                    <children>
-                        <ImageView fx:id="afterImageView" />
-                    </children>
+            <Button fx:id="leftPanelButton" minWidth="-Infinity" onAction="#showLeftPanel" prefWidth="10.0"/>
+            <ScrollPane fx:id="leftSP">
+                <StackPane fx:id="leftStackPImg" >
+                    <ImageView fx:id="originalImageView"/>
                 </StackPane>
-            </content>
-            <BorderPane.margin>
-                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-            </BorderPane.margin>
-        </ScrollPane>
-    </right>
-    <center>
-        <VBox fx:id="center" alignment="BOTTOM_CENTER" fillWidth="false" prefWidth="200" spacing="10.0" BorderPane.alignment="CENTER">
-            <children>
-                <ChoiceBox fx:id="algorithmChoiceBox" />
-                <ChoiceBox fx:id="paletteChoiceBox" />
-                <Region VBox.vgrow="ALWAYS" />
-                <Button fx:id="submitButton" onAction="#mainProcessSubmitted" text="_Submit" />
-            </children>
-            <padding>
-                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-            </padding>
-        </VBox>
-    </center>
-    <bottom>
-        <HBox BorderPane.alignment="CENTER">
-            <children>
-                <Button onAction="#openFile" text="_Choose file..." />
-                <Region HBox.hgrow="ALWAYS" />
-                <Button onAction="#saveFile" text="_Save file..." />
-            </children>
-            <padding>
-                <Insets bottom="10.0" left="10.0" right="10.0" />
-            </padding>
+                <HBox.margin>
+                    <Insets right="10.0"/>
+                </HBox.margin>
+            </ScrollPane>
         </HBox>
-    </bottom>
+    </left>
+    <center>
+        <ScrollPane fx:id="mainSP" BorderPane.alignment="CENTER">
+            <StackPane fx:id="mainStackPImg" >
+                <ImageView fx:id="mainImageView"/>
+            </StackPane>
+            <BorderPane.margin>
+                <Insets bottom="10.0" right="10.0" top="10.0"/>
+            </BorderPane.margin>
+        </ScrollPane>
+    </center>
 </BorderPane>

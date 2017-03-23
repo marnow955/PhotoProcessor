@@ -7,3 +7,12 @@
 /*.choice-box .context-menu {*/
     /*-fx-pref-width: 200;*/
 /*}*/
+#leftSP {
+    visibility: hidden;
+}
+/*#leftStackPImg {*/
+    /*visibility: hidden;*/
+/*}*/
+/*#beforeImageView {*/
+    /*visibility: hidden;*/
+/*}*/
