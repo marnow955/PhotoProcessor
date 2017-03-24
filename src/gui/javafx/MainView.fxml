@@ -21,52 +21,52 @@
         <VBox BorderPane.alignment="CENTER">
             <MenuBar>
                 <Menu text="_File">
-                    <MenuItem onAction="#openFile" text="_Open file..."/>
-                    <MenuItem onAction="#saveFile" text="_Save file..."/>
-                    <SeparatorMenuItem/>
-                    <MenuItem onAction="#closeProgram" text="E_xit"/>
+                    <MenuItem onAction="#openFile" text="_Open file..." />
+                    <MenuItem onAction="#saveFile" text="_Save file..." />
+                    <SeparatorMenuItem />
+                    <MenuItem onAction="#closeProgram" text="E_xit" />
                 </Menu>
                 <Menu text="_Edit">
-                    <MenuItem text="_Delete"/>
+                    <MenuItem text="_Delete" />
                 </Menu>
                 <Menu text="_Help">
-                    <MenuItem text="_About"/>
+                    <MenuItem text="_About" />
                 </Menu>
             </MenuBar>
             <HBox spacing="10.0">
                 <padding>
-                    <Insets left="10.0" right="10.0" top="10.0"/>
+                    <Insets left="10.0" right="10.0" top="10.0" />
                 </padding>
-                <ChoiceBox fx:id="algorithmChoiceBox"/>
-                <ChoiceBox fx:id="paletteChoiceBox"/>
-                <Region/>
-                <Button fx:id="submitButton" onAction="#mainProcessSubmitted" text="_Submit"/>
+                <ChoiceBox fx:id="algorithmChoiceBox" />
+                <ChoiceBox fx:id="paletteChoiceBox" />
+                <Region />
+                <Button fx:id="submitButton" onAction="#mainProcessSubmitted" text="_Submit" />
             </HBox>
         </VBox>
     </top>
     <left>
         <HBox fx:id="leftHBox">
             <BorderPane.margin>
-                <Insets bottom="10.0" top="10.0"/>
+                <Insets bottom="10.0" top="10.0" />
             </BorderPane.margin>
-            <Button fx:id="leftPanelButton" minWidth="-Infinity" onAction="#showLeftPanel" prefWidth="10.0"/>
+            <Button fx:id="leftPanelButton" minWidth="-Infinity" onAction="#showLeftPanel" prefWidth="10.0" />
             <ScrollPane fx:id="leftSP">
-                <StackPane fx:id="leftStackPImg" >
-                    <ImageView fx:id="originalImageView"/>
+                <StackPane fx:id="leftStackPImg">
+                    <ImageView fx:id="originalImageView" />
                 </StackPane>
                 <HBox.margin>
-                    <Insets right="10.0"/>
+                    <Insets right="10.0" />
                 </HBox.margin>
             </ScrollPane>
         </HBox>
     </left>
     <center>
         <ScrollPane fx:id="mainSP" BorderPane.alignment="CENTER">
-            <StackPane fx:id="mainStackPImg" >
-                <ImageView fx:id="mainImageView"/>
+            <StackPane fx:id="mainStackPImg">
+                <ImageView fx:id="mainImageView" />
             </StackPane>
             <BorderPane.margin>
-                <Insets bottom="10.0" right="10.0" top="10.0"/>
+                <Insets bottom="10.0" right="10.0" top="10.0" />
             </BorderPane.margin>
         </ScrollPane>
     </center>

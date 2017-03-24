@@ -3,6 +3,8 @@ package gui.javafx;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.embed.swing.SwingFXUtils;
+import javafx.geometry.*;
+import javafx.geometry.Insets;
 import javafx.scene.control.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
@@ -55,15 +57,18 @@ public class Controller {
 
     void setStageAndSetupView(Stage primaryStage) {
         window = primaryStage;
-//        leftSP.prefWidthProperty().bind(window.widthProperty().subtract(center.getPrefWidth()+70).divide(2));
-        leftStackPImg.prefWidthProperty().bind(leftSP.widthProperty().subtract(10));
-        leftStackPImg.prefHeightProperty().bind(leftSP.heightProperty().subtract(10));
-//        rightSP.prefWidthProperty().bind(window.widthProperty().subtract(center.getPrefWidth()+70).divide(2));
-        mainStackPImg.prefWidthProperty().bind(mainSP.widthProperty().subtract(10));
-        mainStackPImg.prefHeightProperty().bind(mainSP.heightProperty().subtract(10));
+
+        leftSP.prefWidthProperty().bind(window.widthProperty().subtract(30).divide(2));
+        leftStackPImg.prefWidthProperty().bind(leftSP.widthProperty().subtract(2));
+        leftStackPImg.prefHeightProperty().bind(leftSP.heightProperty().subtract(2));
         leftPanelButton.prefHeightProperty().bind(leftHBox.heightProperty());
         leftPanelButton.disableProperty().bind(isImageSelected.not());
+        leftPanelButton.setText("\u25C0");
         leftSP.managedProperty().bind(leftSP.visibleProperty());
+        showLeftPanel();    // Hide left panel
+//        rightSP.prefWidthProperty().bind(window.widthProperty().subtract(center.getPrefWidth()+70).divide(2));
+        mainStackPImg.prefWidthProperty().bind(mainSP.widthProperty().subtract(2));
+        mainStackPImg.prefHeightProperty().bind(mainSP.heightProperty().subtract(2));
 
         paletteChoiceBox.prefWidthProperty().bind(algorithmChoiceBox.widthProperty());
         submitButton.prefWidthProperty().bind(algorithmChoiceBox.widthProperty());
@@ -174,5 +179,9 @@ public class Controller {
 
     public void showLeftPanel() {
         leftSP.setVisible(!leftSP.isVisible());
+        if (leftPanelButton.getText().equals("\u25C0"))
+            leftPanelButton.setText("\u25B6");
+        else
+            leftPanelButton.setText("\u25C0");
     }
 }
