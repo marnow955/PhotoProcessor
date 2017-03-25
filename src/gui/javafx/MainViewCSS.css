@@ -12,8 +12,8 @@
     -fx-background-color: #000;
 }
 #mainStackPImg {
-    /* Background pattern from Subtle Patterns */
-    -fx-background-image: url('footer_lodyas.png');
+    -fx-background-color: #000;
+    -fx-background-image: url('ps-neutral.png');
     -fx-background-repeat: repeat;
 }
 #leftSP {
@@ -21,8 +21,8 @@
     -fx-background-color: #000;
 }
 #leftStackPImg {
-    /* Background pattern from Subtle Patterns */
-    -fx-background-image: url('footer_lodyas.png');
+    -fx-background-color: #000;
+    -fx-background-image: url('ps-neutral.png');
     -fx-background-repeat: repeat;
 }
 #leftPanelButton {
