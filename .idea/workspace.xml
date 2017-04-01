@@ -2,9 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="57193211-c427-4990-9d0c-149784d693a5" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/gui/javafx/footer_lodyas.png" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/PhotoProcessor/gui/javafx/MainView.fxml" afterPath="$PROJECT_DIR$/out/production/PhotoProcessor/gui/javafx/MainView.fxml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/PhotoProcessor/gui/javafx/MainViewCSS.css" afterPath="$PROJECT_DIR$/out/production/PhotoProcessor/gui/javafx/MainViewCSS.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/gui/javafx/MainView.fxml" afterPath="$PROJECT_DIR$/src/gui/javafx/MainView.fxml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/gui/javafx/MainViewCSS.css" afterPath="$PROJECT_DIR$/src/gui/javafx/MainViewCSS.css" />
     </list>
     <ignored path="PhotoProcessor.iws" />
@@ -29,7 +30,7 @@
       <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/gui/javafx/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
+            <state relative-caret-position="17">
               <caret line="9" column="34" lean-forward="false" selection-start-line="9" selection-start-column="34" selection-end-line="9" selection-end-column="34" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -40,22 +41,22 @@
       </file>
       <file leaf-file-name="MainView.fxml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/gui/javafx/MainView.fxml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="867">
-              <caret line="51" column="108" lean-forward="false" selection-start-line="51" selection-start-column="108" selection-end-line="51" selection-end-column="108" />
-              <folding />
-            </state>
-          </provider>
           <provider editor-type-id="JavaFX-Scene-Builder">
             <state />
+          </provider>
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="296">
+              <caret line="63" column="90" lean-forward="true" selection-start-line="63" selection-start-column="90" selection-end-line="63" selection-end-column="90" />
+              <folding />
+            </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="MainViewCSS.css" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/gui/javafx/MainViewCSS.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="268">
-              <caret line="20" column="31" lean-forward="false" selection-start-line="20" selection-start-column="31" selection-end-line="20" selection-end-column="31" />
+            <state relative-caret-position="132">
+              <caret line="38" column="0" lean-forward="true" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -64,8 +65,8 @@
       <file leaf-file-name="Controller.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/gui/javafx/Controller.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2737">
-              <caret line="184" column="43" lean-forward="false" selection-start-line="184" selection-start-column="43" selection-end-line="184" selection-end-column="43" />
+            <state relative-caret-position="192">
+              <caret line="70" column="85" lean-forward="true" selection-start-line="70" selection-start-column="85" selection-end-line="70" selection-end-column="85" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -147,7 +148,9 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
       <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -204,8 +207,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -702,11 +703,15 @@
       <workItem from="1490433712305" duration="1501000" />
       <workItem from="1490464922247" duration="312000" />
       <workItem from="1490465267639" duration="18000" />
+      <workItem from="1490530139696" duration="177000" />
+      <workItem from="1490530363792" duration="46000" />
+      <workItem from="1490531788346" duration="5000" />
+      <workItem from="1491056708587" duration="9882000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="54846000" />
+    <option name="totallyTimeSpent" value="64956000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -736,7 +741,7 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2526475" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2677761" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -1119,9 +1124,14 @@
         <state />
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/gui/javafx/ps-neutral.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/gui/javafx/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
+        <state relative-caret-position="17">
           <caret line="9" column="34" lean-forward="false" selection-start-line="9" selection-start-column="34" selection-end-line="9" selection-end-column="34" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -1129,36 +1139,31 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/gui/javafx/MainView.fxml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="867">
-          <caret line="51" column="108" lean-forward="false" selection-start-line="51" selection-start-column="108" selection-end-line="51" selection-end-column="108" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/gui/javafx/Controller.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2737">
-          <caret line="184" column="43" lean-forward="false" selection-start-line="184" selection-start-column="43" selection-end-line="184" selection-end-column="43" />
+        <state relative-caret-position="192">
+          <caret line="70" column="85" lean-forward="true" selection-start-line="70" selection-start-column="85" selection-end-line="70" selection-end-column="85" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/gui/javafx/ps-neutral.png">
-      <provider selected="true" editor-type-id="images">
+    <entry file="file://$PROJECT_DIR$/src/gui/javafx/MainView.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder">
         <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="296">
+          <caret line="63" column="90" lean-forward="true" selection-start-line="63" selection-start-column="90" selection-end-line="63" selection-end-column="90" />
+          <folding />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/gui/javafx/MainViewCSS.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="268">
-          <caret line="20" column="31" lean-forward="false" selection-start-line="20" selection-start-column="31" selection-end-line="20" selection-end-column="31" />
+        <state relative-caret-position="132">
+          <caret line="38" column="0" lean-forward="true" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
           <folding />
         </state>
       </provider>
