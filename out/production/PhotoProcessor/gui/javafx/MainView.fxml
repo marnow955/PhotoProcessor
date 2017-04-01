@@ -11,7 +11,6 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
@@ -20,7 +19,7 @@
     <top>
         <VBox BorderPane.alignment="CENTER">
             <MenuBar>
-                <Menu text="_File">
+                <Menu text="_File" >
                     <MenuItem onAction="#openFile" text="_Open file..." />
                     <MenuItem onAction="#saveFile" text="_Save file..." />
                     <SeparatorMenuItem />
@@ -37,10 +36,8 @@
                 <padding>
                     <Insets left="10.0" right="10.0" top="10.0" />
                 </padding>
-                <ChoiceBox fx:id="algorithmChoiceBox" />
-                <ChoiceBox fx:id="paletteChoiceBox" />
-                <Region />
-                <Button fx:id="submitButton" onAction="#mainProcessSubmitted" text="_Submit" />
+                <ChoiceBox fx:id="algorithmChoiceBox" onAction="#mainProcessSubmitted"/>
+                <ChoiceBox fx:id="paletteChoiceBox" onAction="#mainProcessSubmitted"/>
             </HBox>
         </VBox>
     </top>
@@ -52,7 +49,7 @@
             <Button fx:id="leftPanelButton" minWidth="-Infinity" onAction="#showLeftPanel" prefWidth="10.0" />
             <ScrollPane fx:id="leftSP">
                 <StackPane fx:id="leftStackPImg">
-                    <ImageView fx:id="originalImageView" />
+                    <ImageView fx:id="leftImageView" />
                 </StackPane>
                 <HBox.margin>
                     <Insets right="10.0" />
@@ -61,7 +58,7 @@
         </HBox>
     </left>
     <center>
-        <ScrollPane fx:id="mainSP" BorderPane.alignment="CENTER" focusTraversable="false">
+        <ScrollPane fx:id="mainSP" BorderPane.alignment="CENTER" onContextMenuRequested="#showContextMenu">
             <StackPane fx:id="mainStackPImg">
                 <ImageView fx:id="mainImageView"/>
             </StackPane>

@@ -3,13 +3,13 @@ package gui.javafx;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.embed.swing.SwingFXUtils;
-import javafx.geometry.*;
-import javafx.geometry.Insets;
 import javafx.scene.control.*;
 import javafx.scene.control.Button;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.ContextMenuEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.stage.FileChooser;
@@ -47,13 +47,14 @@ public class Controller {
     public ScrollPane mainSP;
     public StackPane leftStackPImg;
     public StackPane mainStackPImg;
-    public ImageView originalImageView;
+    public ImageView leftImageView;
     public ImageView mainImageView;
     public Button leftPanelButton;
 
     public ChoiceBox<String> algorithmChoiceBox;
     public ChoiceBox<String> paletteChoiceBox;
-    public Button submitButton;
+
+    private final ContextMenu contextMenu = new ContextMenu();
 
     void setStageAndSetupView(Stage primaryStage) {
         window = primaryStage;
@@ -66,14 +67,12 @@ public class Controller {
         leftPanelButton.setText("\u25C0");
         leftSP.managedProperty().bind(leftSP.visibleProperty());
         showLeftPanel();    // Hide left panel
-//        rightSP.prefWidthProperty().bind(window.widthProperty().subtract(center.getPrefWidth()+70).divide(2));
         mainStackPImg.prefWidthProperty().bind(mainSP.widthProperty().subtract(2));
         mainStackPImg.prefHeightProperty().bind(mainSP.heightProperty().subtract(2));
 
-        paletteChoiceBox.prefWidthProperty().bind(algorithmChoiceBox.widthProperty());
-        submitButton.prefWidthProperty().bind(algorithmChoiceBox.widthProperty());
-
+        algorithmChoiceBox.disableProperty().bind(isImageSelected.not());
         algorithmChoiceBox.getItems().addAll(
+                "Original",
                 "Nearest Color",
                 "NC with Noise Signal",
                 "Floyd-Steinberg Dithering",
@@ -81,10 +80,20 @@ public class Controller {
                 "Burke Dithering",
                 "Jarvis, Judice, Ninke Dithering"
         );
-        algorithmChoiceBox.setValue("Floyd-Steinberg Dithering");
+        algorithmChoiceBox.getSelectionModel().selectFirst();
 
+        paletteChoiceBox.disableProperty().bind(algorithmChoiceBox.getSelectionModel().selectedItemProperty()
+                .isEqualTo("Original"));
         paletteChoiceBox.getItems().addAll("2", "8", "27");
         paletteChoiceBox.setValue("27");
+
+        MenuItem openFileItem = new MenuItem("Open file...");
+        openFileItem.setOnAction(event -> openFile());
+        MenuItem saveFileItem = new MenuItem("Save file...");
+        saveFileItem.setOnAction(event -> saveFile());
+        contextMenu.getItems().addAll(openFileItem, saveFileItem);
+        mainSP.setContextMenu(contextMenu);
+        leftSP.setContextMenu(contextMenu);
     }
 
     public void openFile() {
@@ -137,7 +146,7 @@ public class Controller {
 
     private void displayOriginalImage() {
         if (isImageSelected.get())
-            originalImageView.setImage(originalImg);
+            leftImageView.setImage(originalImg);
     }
 
     private void displayMainImage() {
@@ -146,10 +155,14 @@ public class Controller {
 
     public void mainProcessSubmitted() {
         if (isImageSelected.get()) {
-            selectPhotoProcessor();
-            selectColorPalette();
-            mainImg = SwingFXUtils.toFXImage(processor.getTransformedImage(SwingFXUtils.fromFXImage(originalImg, null),
-                    colorPalette), null);
+            if (algorithmChoiceBox.getSelectionModel().getSelectedItem().equals("Original")) {
+                mainImg = originalImg;
+            } else {
+                selectPhotoProcessor();
+                selectColorPalette();
+                mainImg = SwingFXUtils.toFXImage(processor.getTransformedImage(SwingFXUtils.fromFXImage(originalImg, null),
+                        colorPalette), null);
+            }
             displayMainImage();
         }
     }
@@ -183,5 +196,13 @@ public class Controller {
             leftPanelButton.setText("\u25B6");
         else
             leftPanelButton.setText("\u25C0");
+    }
+
+    public void showContextMenu(ContextMenuEvent contextMenuEvent) {
+        if (contextMenuEvent.getSource().toString().contains("id=mainSP")) {
+            System.out.println("main");
+        } else if (contextMenuEvent.getSource().toString().contains("id=leftSP")) {
+            System.out.println("left");
+        }
     }
 }
