@@ -25,9 +25,13 @@ import java.io.IOException;
  * Created by marek on 2017-02-14.
  */
 public class Controller {
+    // TODO: multiple controller - main, window, panels
+    // TODO: save file disable, name of file label, save multiple files...
+    // TODO: setDisableWhileNULL
 
-    private BooleanProperty isImageSelected = new SimpleBooleanProperty(false);
-//    private boolean isImageSelected = false;
+    private BooleanProperty isImageSelectedProperty = new SimpleBooleanProperty(false);
+    private BooleanProperty isImageFitToWindowProperty = new SimpleBooleanProperty(false);
+//    private boolean isImageSelectedProperty = false;
     private FileChooser.ExtensionFilter[] filters = {
             new FileChooser.ExtensionFilter("Image (*.png, *.jpg, *.gif)", "*.png", "*.jpg", "*.gif", "*.jpeg",
                     "*.PNG", "*.JPG", "*.GIF", "*.JPEG"),
@@ -63,14 +67,18 @@ public class Controller {
         leftStackPImg.prefWidthProperty().bind(leftSP.widthProperty().subtract(2));
         leftStackPImg.prefHeightProperty().bind(leftSP.heightProperty().subtract(2));
         leftPanelButton.prefHeightProperty().bind(leftHBox.heightProperty());
-        leftPanelButton.disableProperty().bind(isImageSelected.not());
+        leftPanelButton.disableProperty().bind(isImageSelectedProperty.not());
         leftPanelButton.setText("\u25C0");
         leftSP.managedProperty().bind(leftSP.visibleProperty());
         showLeftPanel();    // Hide left panel
         mainStackPImg.prefWidthProperty().bind(mainSP.widthProperty().subtract(2));
         mainStackPImg.prefHeightProperty().bind(mainSP.heightProperty().subtract(2));
 
-        algorithmChoiceBox.disableProperty().bind(isImageSelected.not());
+        mainImageView.setPreserveRatio(true);
+        mainImageView.fitWidthProperty().bind(mainSP.widthProperty().subtract(2));
+        mainImageView.fitHeightProperty().bind(mainSP.heightProperty().subtract(2));
+
+        algorithmChoiceBox.disableProperty().bind(isImageSelectedProperty.not());
         algorithmChoiceBox.getItems().addAll(
                 "Original",
                 "Nearest Color",
@@ -87,23 +95,29 @@ public class Controller {
         paletteChoiceBox.getItems().addAll("2", "8", "27");
         paletteChoiceBox.setValue("27");
 
+        RadioMenuItem originalSizeItem = new RadioMenuItem("Original size");
+        RadioMenuItem fitToWindowItem = new RadioMenuItem("Fit to window");
+        ToggleGroup sizeTG = new ToggleGroup();
+        sizeTG.getToggles().addAll(originalSizeItem,fitToWindowItem);
         MenuItem openFileItem = new MenuItem("Open file...");
         openFileItem.setOnAction(event -> openFile());
         MenuItem saveFileItem = new MenuItem("Save file...");
         saveFileItem.setOnAction(event -> saveFile());
-        contextMenu.getItems().addAll(openFileItem, saveFileItem);
+        contextMenu.getItems().addAll(originalSizeItem, fitToWindowItem, new SeparatorMenuItem(), openFileItem,
+                saveFileItem);
         mainSP.setContextMenu(contextMenu);
         leftSP.setContextMenu(contextMenu);
     }
 
     public void openFile() {
+        // TODO: set original size and then display
         FileChooser fileChooser = new FileChooser();
         fileChooser.getExtensionFilters().addAll(filters);
         fileChooser.setInitialDirectory(new File(System.getProperty("user.home")));
         File file = fileChooser.showOpenDialog(window);
         if (file != null) {
             if (checkFileExtension(file)) {
-                isImageSelected.set(true);
+                isImageSelectedProperty.set(true);
                 originalImg = new Image(file.toURI().toString());
                 mainImg = originalImg;
                 displayOriginalImage();
@@ -145,7 +159,7 @@ public class Controller {
     }
 
     private void displayOriginalImage() {
-        if (isImageSelected.get())
+        if (isImageSelectedProperty.get())
             leftImageView.setImage(originalImg);
     }
 
@@ -154,7 +168,7 @@ public class Controller {
     }
 
     public void mainProcessSubmitted() {
-        if (isImageSelected.get()) {
+        if (isImageSelectedProperty.get()) {
             if (algorithmChoiceBox.getSelectionModel().getSelectedItem().equals("Original")) {
                 mainImg = originalImg;
             } else {
@@ -199,6 +213,9 @@ public class Controller {
     }
 
     public void showContextMenu(ContextMenuEvent contextMenuEvent) {
+//        if (!isImageSelectedProperty.get()) {
+//            contextMenu.hide();
+//        }
         if (contextMenuEvent.getSource().toString().contains("id=mainSP")) {
             System.out.println("main");
         } else if (contextMenuEvent.getSource().toString().contains("id=leftSP")) {
