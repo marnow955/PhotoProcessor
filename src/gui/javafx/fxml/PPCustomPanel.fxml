@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox xmlns="http://javafx.com/javafx/8.0.101" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="gui.javafx.controllers.PPCustomPanelController" fx:id="container" spacing="10.0">
+    <HBox spacing="10.0">
+        <ChoiceBox fx:id="algorithmChoiceBox" onAction="#mainProcessSubmitted"/>
+        <ChoiceBox fx:id="paletteChoiceBox" onAction="#mainProcessSubmitted"/>
+    </HBox>
+    <fx:include fx:id="imagePanel" source="ImagePanel.fxml"/>
+    <padding>
+        <Insets right="10.0"/>
+    </padding>
+</VBox>

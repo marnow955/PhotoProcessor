@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.StackPane?>
+
+<ScrollPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.101"
+            fx:controller="gui.javafx.controllers.ImagePanelController" fx:id="scrollPane">
+    <StackPane fx:id="stackPane">
+        <ImageView fx:id="imageView"/>
+    </StackPane>
+</ScrollPane>

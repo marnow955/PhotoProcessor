@@ -52,25 +52,14 @@
     -fx-pref-width: 200;
 }
 
-#mainSP {
+.scroll-pane {
     -fx-border-width: 0;
     -fx-background-insets: 0;
     -fx-background-color: #000;
 }
-#mainStackPImg {
+#stackPane {
     -fx-background-color: #000;
-    -fx-background-image: url('ps-neutral.png');
-    -fx-background-repeat: repeat;
-}
-
-#leftSP {
-    -fx-border-width: 0;
-    -fx-background-insets: 0;
-    -fx-background-color: #000;
-}
-#leftStackPImg {
-    -fx-background-color: #000;
-    -fx-background-image: url('ps-neutral.png');
+    -fx-background-image: url('../ps-neutral.png');
     -fx-background-repeat: repeat;
 }
 
