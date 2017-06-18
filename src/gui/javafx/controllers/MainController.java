@@ -3,9 +3,12 @@ package gui.javafx.controllers;
 import gui.javafx.OpenSaveImageDialog;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.MenuItem;
 import javafx.scene.image.Image;
+import javafx.scene.input.KeyCombination;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -15,7 +18,8 @@ import javafx.stage.Stage;
  */
 public class MainController {
     // TODO: save file disable, name of file label, save multiple files...
-    // TODO: setDisableWhileNULL
+    // TODO: percent of zoom
+    // TODO: Ctrl+S
 
     BooleanProperty isImageSelectedProperty = new SimpleBooleanProperty(false);
 
@@ -34,6 +38,8 @@ public class MainController {
     private VBox mainCustomPanel;
     @FXML
     private PPCustomPanelController mainCustomPanelController;
+    @FXML
+    private MenuItem saveFileMenuItem;
 
     public void setStageAndSetupView(Stage primaryStage) {
         window = primaryStage;
@@ -49,15 +55,16 @@ public class MainController {
 
         leftCustomPanelController.setupView();
         mainCustomPanelController.setupView();
+        saveFileMenuItem.disableProperty().bind(isImageSelectedProperty.not());
+        saveFileMenuItem.setAccelerator(KeyCombination.keyCombination("Ctrl+S"));
     }
 
     public void openFile() {
-        // TODO: set original size and then display
         originalImage = new OpenSaveImageDialog().openImage(window);
         if (originalImage != null) {
             isImageSelectedProperty.set(true);
-            mainCustomPanelController.updateImage(originalImage);
-            leftCustomPanelController.updateImage(originalImage);
+            mainCustomPanelController.setImage(originalImage);
+            leftCustomPanelController.setImage(originalImage);
         }
     }
 
@@ -81,5 +88,13 @@ public class MainController {
 
     Image getOriginalImage() {
         return originalImage;
+    }
+
+    public void clearWorkspace() {
+        // TODO: .
+        originalImage = null;
+        isImageSelectedProperty.set(false);
+        mainCustomPanelController.setImage(null);
+        leftCustomPanelController.setImage(null);
     }
 }

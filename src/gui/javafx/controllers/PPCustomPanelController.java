@@ -1,11 +1,14 @@
 package gui.javafx.controllers;
 
+import javafx.beans.property.BooleanProperty;
+import javafx.beans.property.SimpleBooleanProperty;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
+import javafx.scene.input.KeyCombination;
 import javafx.scene.layout.VBox;
 import photo.processor.*;
 
@@ -46,9 +49,10 @@ public class PPCustomPanelController {
         this.mainController = mainController;
     }
 
-    void updateImage(Image originalImage) {
+    void setImage(Image originalImage) {
         image = originalImage;
         imagePanelController.setImage(image);
+        imagePanelController.setImageFitToWindow(true);
     }
 
     Image getImage() {
@@ -129,11 +133,21 @@ public class PPCustomPanelController {
     private void createContextMenu() {
         RadioMenuItem originalSizeItem = new RadioMenuItem("Original size");
         RadioMenuItem fitToWindowItem = new RadioMenuItem("Fit to window");
+        originalSizeItem.disableProperty().bind(mainController.isImageSelectedProperty.not());
+        fitToWindowItem.disableProperty().bind(mainController.isImageSelectedProperty.not());
+        fitToWindowItem.selectedProperty().bindBidirectional(imagePanelController.isImageFitToWindowProperty());
         ToggleGroup sizeTG = new ToggleGroup();
         sizeTG.getToggles().addAll(originalSizeItem, fitToWindowItem);
+        imagePanelController.isZoomProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue) {
+                //TODO: .
+            }
+        });
         MenuItem openFileItem = new MenuItem("Open file...");
         openFileItem.setOnAction(event -> mainController.openFile());
         MenuItem saveFileItem = new MenuItem("Save file...");
+        saveFileItem.disableProperty().bind(mainController.isImageSelectedProperty.not());
+        saveFileItem.setAccelerator(KeyCombination.keyCombination("Ctrl+S"));
         saveFileItem.setOnAction(event -> mainController.saveFile());
         contextMenu.getItems().addAll(originalSizeItem, fitToWindowItem, new SeparatorMenuItem(), openFileItem,
                 saveFileItem);

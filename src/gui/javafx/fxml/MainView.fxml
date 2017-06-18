@@ -19,12 +19,12 @@
             </BorderPane.margin>
             <Menu text="_File">
                 <MenuItem onAction="#openFile" text="_Open file..."/>
-                <MenuItem onAction="#saveFile" text="_Save file..."/>
+                <MenuItem fx:id="saveFileMenuItem" onAction="#saveFile" text="_Save file..."/>
                 <SeparatorMenuItem/>
                 <MenuItem onAction="#closeProgram" text="E_xit"/>
             </Menu>
             <Menu text="_Edit">
-                <MenuItem text="_Delete"/>
+                <MenuItem text="_Clear" onAction="#clearWorkspace"/>
             </Menu>
             <Menu text="_Help">
                 <MenuItem text="_About"/>
